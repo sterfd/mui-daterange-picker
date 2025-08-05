@@ -5,8 +5,6 @@ import external from 'rollup-plugin-peer-deps-external';
 import resolve from '@rollup/plugin-node-resolve';
 import url from '@rollup/plugin-url';
 
-import pkg from './package.json';
-
 const commonjsOptions = {
   include: 'node_modules/**',
 };
@@ -15,17 +13,24 @@ export default {
   input: 'src/index.ts',
   output: [
     {
-      file: pkg.main,
+      file: 'dist/index.js',
       format: 'cjs',
       sourcemap: true,
     },
     {
-      file: pkg.module,
+      file: 'dist/index.es.js',
       format: 'es',
       sourcemap: true,
     },
   ],
-  external: [/@babel\/runtime/],
+  external: [
+    /@babel\/runtime/, 
+    'react',
+    'react-dom',
+    '@emotion/react',
+    '@emotion/styled',
+    '@mui/material',
+  ],
   plugins: [
     external(),
     url({ exclude: ['**/*.svg'] }),
