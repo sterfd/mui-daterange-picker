@@ -1,6 +1,6 @@
 # MUI DateRange Picker
 
-A react date range picker implementation using @mui (v5).
+A react date range picker implementation using @mui (v7).
 
 <a href='https://www.npmjs.com/package/mui-daterange-picker'>
     <img src='https://img.shields.io/npm/v/mui-daterange-picker.svg' alt='Latest npm version'>
@@ -17,16 +17,13 @@ Check out the project running [here](https://codesandbox.io/s/mui-daterange-pick
 ## Usage
 
 ```bash
-npm install mui-daterange-picker --save
-
-# or with yarn
-yarn add mui-daterange-picker
+npm install mui-daterange-picker-7 --save
 ```
 
 ## Basic example
 ```tsx
 import React from "react";
-import { DateRangePicker, DateRange } from "mui-daterange-picker";
+import { DateRangePicker, DateRange } from "mui-daterange-picker-7";
 
 type Props = {}
 
