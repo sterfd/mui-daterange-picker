@@ -4,7 +4,7 @@ import Grid from '@mui/material/Grid';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 
-import React from 'react';
+import React, {useMemo} from 'react';
 import ChevronLeft from '@mui/icons-material/ChevronLeft';
 import ChevronRight from '@mui/icons-material/ChevronRight';
 import {getMonth, getYear, setMonth, setYear} from 'date-fns';
@@ -36,6 +36,8 @@ const Header: React.FunctionComponent<HeaderProps> = ({
   onClickPrevious,
   locale
 }: HeaderProps) => {
+  const years = useMemo(() => generateYears(date, 30), [date.getFullYear()]);
+
   const MONTHS = typeof locale !== 'undefined'
     ? [...Array(12).keys()].map(d => locale.localize?.month(d, {width: 'abbreviated', context: 'standalone'}))
     : ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
@@ -70,7 +72,17 @@ const Header: React.FunctionComponent<HeaderProps> = ({
           <Select
             value={getMonth(date)}
             onChange={handleMonthChange}
-            MenuProps={{disablePortal: true}}
+            onClick={(e) => e.stopPropagation()}
+            onMouseDown={(e) => e.stopPropagation()}         
+            MenuProps={{
+              disablePortal: true,
+              PaperProps: {
+                style: {
+                  maxHeight: 300,
+                  overflow: 'auto' 
+                }
+              }
+            }}
           >
             {MONTHS.map((month, idx) => (
               <MenuItem key={month} value={idx}>
@@ -86,17 +98,25 @@ const Header: React.FunctionComponent<HeaderProps> = ({
           <Select
             value={getYear(date)}
             onChange={handleYearChange}
-            MenuProps={{ disablePortal: true }}
+            onClick={(e) => e.stopPropagation()}
+            onMouseDown={(e) => e.stopPropagation()}
+            MenuProps={{
+              disablePortal: true,
+              PaperProps: {
+                style: {
+                  maxHeight: 300, 
+                  overflow: 'auto' 
+                }
+              }
+            }}
           >
-            {generateYears(date, 30).map((year) => (
+            {years.map((year) => (
               <MenuItem key={year} value={year}>
                 {year}
               </MenuItem>
             ))}
           </Select>
         </FormControl>
-
-        {/* <Typography>{format(date, "MMMM YYYY")}</Typography> */}
       </Grid>
       <Grid  sx={{ padding: '5px' }}>
         <IconButton

@@ -59,7 +59,8 @@ const Month: React.FunctionComponent<MonthProps> = (props: MonthProps) => {
 
   return (
     <Paper square elevation={0} sx={{ width: 290 }}>
-      <Grid container>
+      <Grid container direction="column" alignItems="center">
+        <Grid>
         <Header
           date={date}
           setDate={setDate}
@@ -68,23 +69,7 @@ const Month: React.FunctionComponent<MonthProps> = (props: MonthProps) => {
           onClickPrevious={() => handlers.onMonthNavigate(marker, NavigationAction.Previous)}
           onClickNext={() => handlers.onMonthNavigate(marker, NavigationAction.Next)}
           locale={locale}
-        />
-
-        <Grid
-          container
-          direction="row"
-          justifyContent="space-between"
-          sx={{
-            marginTop: "10px",
-            paddingLeft: "30px",
-            paddingRight: "30px"
-          }}
-        >
-          {WEEK_DAYS.map((day, index) => (
-            <Typography color="textSecondary" key={index} variant="caption">
-              {day}
-            </Typography>
-          ))}
+          />
         </Grid>
 
         <Grid

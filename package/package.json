@@ -1,6 +1,6 @@
 {
     "name": "mui-daterange-picker-7",
-    "version": "1.0.9",
+    "version": "1.0.10",
     "description": "A react date range picker implementation using @mui7.",
     "author": "sterfd",
     "license": "MIT",
