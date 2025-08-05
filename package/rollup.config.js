@@ -1,4 +1,4 @@
-import typescript from 'rollup-plugin-typescript2';
+import typescript from '@rollup/plugin-typescript';
 import babel from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import external from 'rollup-plugin-peer-deps-external';
@@ -32,13 +32,11 @@ export default {
     babel({
       babelHelpers: 'runtime',
       exclude: 'node_modules/**',
+      extensions: ['.js', '.jsx', '.ts', '.tsx'],
       plugins: ["@babel/plugin-transform-runtime"],
     }),
     resolve(),
-    typescript({
-      rollupCommonJSResolveHack: true,
-      clean: true,
-    }),
+    typescript({ tsconfig: '../tsconfig.json' }),
     commonjs(commonjsOptions),
   ],
 };
