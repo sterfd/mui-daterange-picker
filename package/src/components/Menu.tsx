@@ -1,6 +1,9 @@
 /* eslint-disable object-curly-newline */
 import React from 'react';
-import { Divider, Grid, Paper, Typography } from '@mui/material';
+import Divider from '@mui/material/Divider';
+import Grid from '@mui/material/Grid';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
 import {differenceInCalendarMonths, format} from 'date-fns';
 import ArrowRightAlt from '@mui/icons-material/ArrowRightAlt';
 import Month from './Month';
@@ -72,15 +75,15 @@ const Menu: React.FunctionComponent<MenuProps> = (props: MenuProps) => {
         <Divider orientation="vertical" flexItem/>
         <Grid>
           <Grid container sx={{ padding: '20px 70px' }} alignItems="center">
-            <Grid item sx={{ flex: 1, textAlign: 'center' }}>
+            <Grid sx={{ flex: 1, textAlign: 'center' }}>
               <Typography variant="subtitle1">
                 {startDate ? format(startDate, 'dd MMMM yyyy', {locale}) : 'Start Date'}
               </Typography>
             </Grid>
-            <Grid item sx={{ flex: 1, textAlign: 'center' }}>
+            <Grid sx={{ flex: 1, textAlign: 'center' }}>
               <ArrowRightAlt color="action" />
             </Grid>
-            <Grid item sx={{ flex: 1, textAlign: 'center' }}>
+            <Grid sx={{ flex: 1, textAlign: 'center' }}>
               <Typography variant="subtitle1">
                 {endDate ? format(endDate, 'dd MMMM yyyy', {locale}) : 'End Date'}
               </Typography>

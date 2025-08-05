@@ -1,4 +1,9 @@
-import {FormControl, Grid, IconButton, MenuItem, Select, SelectChangeEvent} from '@mui/material';
+import Select, {SelectChangeEvent} from '@mui/material/Select';
+import IconButton from '@mui/material/IconButton';
+import Grid from '@mui/material/Grid';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+
 import React from 'react';
 import ChevronLeft from '@mui/icons-material/ChevronLeft';
 import ChevronRight from '@mui/icons-material/ChevronRight';
@@ -36,16 +41,16 @@ const Header: React.FunctionComponent<HeaderProps> = ({
     : ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
 
   const handleMonthChange = (event: SelectChangeEvent<number>) => {
-    setDate(setMonth(date, parseInt(event.target.value as string, 10)));
+    setDate(setMonth(date, parseInt(String(event.target.value), 10)));
   };
 
   const handleYearChange = (event: SelectChangeEvent<number>) => {
-    setDate(setYear(date, parseInt(event.target.value as string, 10)));
+    setDate(setYear(date, parseInt(String(event.target.value) , 10)));
   };
 
   return (
     <Grid container justifyContent="space-between" alignItems="center">
-      <Grid item sx={{ padding: '5px' }}>
+      <Grid sx={{ padding: '5px' }}>
         <IconButton
           sx={{
             padding: '10px',
@@ -60,7 +65,7 @@ const Header: React.FunctionComponent<HeaderProps> = ({
           <ChevronLeft color={prevDisabled ? 'disabled' : 'action'} />
         </IconButton>
       </Grid>
-      <Grid item>
+      <Grid >
         <FormControl variant="standard">
           <Select
             value={getMonth(date)}
@@ -76,7 +81,7 @@ const Header: React.FunctionComponent<HeaderProps> = ({
         </FormControl>
       </Grid>
 
-      <Grid item>
+      <Grid >
         <FormControl variant="standard">
           <Select
             value={getYear(date)}
@@ -93,7 +98,7 @@ const Header: React.FunctionComponent<HeaderProps> = ({
 
         {/* <Typography>{format(date, "MMMM YYYY")}</Typography> */}
       </Grid>
-      <Grid item sx={{ padding: '5px' }}>
+      <Grid  sx={{ padding: '5px' }}>
         <IconButton
           sx={{
             padding: '10px',

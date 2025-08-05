@@ -1,5 +1,8 @@
 import React from 'react';
-import { IconButton, Typography, Box } from '@mui/material';
+import Box from '@mui/material/Box';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+
 
 interface DayProps {
   filled?: boolean;

@@ -1,5 +1,7 @@
 import React from "react";
-import { Paper, Grid, Typography } from "@mui/material";
+import Grid from '@mui/material/Grid';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
 import {
   getDate, isSameMonth, isToday, format, isWithinInterval
 } from "date-fns";
@@ -69,7 +71,6 @@ const Month: React.FunctionComponent<MonthProps> = (props: MonthProps) => {
         />
 
         <Grid
-          item
           container
           direction="row"
           justifyContent="space-between"
@@ -87,7 +88,6 @@ const Month: React.FunctionComponent<MonthProps> = (props: MonthProps) => {
         </Grid>
 
         <Grid
-          item
           container
           direction="column"
           justifyContent="space-between"

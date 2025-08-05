@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box } from '@mui/material';
+import Box from '@mui/material/Box';
 import DateRangePicker from './DateRangePicker';
 
 // eslint-disable-next-line no-unused-vars

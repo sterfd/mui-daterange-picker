@@ -1,5 +1,7 @@
 import React from 'react';
-import {List, ListItem, ListItemText} from '@mui/material';
+import ListItemText from '@mui/material/ListItemText';
+import List from '@mui/material/List';
+import ListItemButton from '@mui/material/ListItemButton';
 import {isSameDay} from 'date-fns';
 import {DateRange, DefinedRange} from '../types';
 
@@ -26,7 +28,7 @@ const DefinedRanges: React.FunctionComponent<DefinedRangesProps> = ({
 }: DefinedRangesProps) => (
   <List>
     {ranges.map((range, idx) => (
-      <ListItem button
+      <ListItemButton
                 key={idx}
                 onClick={() => setRange(range)}
                 sx={[
@@ -39,18 +41,28 @@ const DefinedRanges: React.FunctionComponent<DefinedRangesProps> = ({
                   }]}
       >
         <ListItemText
-          primaryTypographyProps={{
-            variant: 'body2',
-            sx: {
-              fontWeight: isSameRange(range, selectedRange)
-                ? 'bold'
-                : 'normal',
-            },
+          slotProps={{
+            primary: {
+              variant: 'body2',
+              sx: {
+                fontWeight: isSameRange(range, selectedRange)
+                  ? 'bold'
+                  : 'normal',
+              },
+            }
           }}
+          // primaryTypographyProps={{
+          //   variant: 'body2',
+          //   sx: {
+          //     fontWeight: isSameRange(range, selectedRange)
+          //       ? 'bold'
+          //       : 'normal',
+          //   },
+          // }}
         >
           {range.label}
         </ListItemText>
-      </ListItem>
+      </ListItemButton>
     ))}
   </List>
 );
